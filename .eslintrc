@@ -16,6 +16,7 @@
     "no-unused-vars": "warn",
     "import/no-import-module-exports": "off",
     "import/no-relative-packages": "off",
+    "import/prefer-default-export": "off",
     "import/order": "off"
   }
 }
