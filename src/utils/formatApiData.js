@@ -1,5 +1,3 @@
-const slugify = require('slugify');
-
 /**
  * @param data {Object} - date from api ("27/4")
  * @returns {string} - formatted date ("27-04")
@@ -66,37 +64,28 @@ export const formatVnExpressDataByDay = (data) => {
  * @param data {string} - value from api (https://vnexpress.net/microservice/sheet/type/covid19_2021_by_location)
  * @returns {Object} - formatted data
  */
-export const formatVnExpressDataByLocation = (data) => {
+export const formatVnExpressDataByMap = (data) => {
   const lines = data.split('\n');
   const result = [];
+
   lines.forEach((line, index) => {
-    if (index === 0) {
-      const provinces = line.split(',');
-      provinces.forEach((province, i) => {
-        if (i >= 1 && i <= 63) {
-          const provinceName = province.split('"')[1];
-          result.push({
-            name: provinceName,
-            slug: slugify(provinceName.toLowerCase()),
-            data: [],
-          });
+    if (index > 0) {
+      const lineData = line.split(',');
+      const id = toNumber(lineData[0]);
+      if (id !== 46 && Boolean(lineData[2])) {
+        if (lineData[2].split('"')[1]) {
+          const newItem = {
+            id,
+            name: lineData[2].split('"')[1],
+            confirmed: toNumber(lineData[3]),
+            newConfirmed: toNumber(lineData[4]),
+            deaths: toNumber(lineData[20]),
+          };
+          result.push(newItem);
         }
-      });
-    }
-    if (index >= 2) {
-      const cases = line.split(',');
-      const rawDate = cases[0].split('"')[1];
-      if (rawDate) {
-        const date = formatDateApi(rawDate);
-        result.forEach((item, i) => {
-          item.data.push({
-            date,
-            confirmed: parseInt(cases[i + 1].split('"')[1] || '0', 10),
-          });
-        });
       }
     }
   });
-  result.sort((a, b) => a.name.localeCompare(b.name));
+
   return result;
 };

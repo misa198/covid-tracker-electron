@@ -1,7 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchCovidVnExpressDataByDay } from '../../apis/vnExpressApi';
+import {
+  fetchCovidVnExpressDataByDay,
+  fetchCovidVnExpressDataByMap,
+} from '../../apis/vnExpressApi';
 
 export const fetchCovidVnExpressDataByDayThunk = createAsyncThunk(
   'home/fetchCovidVnExpressDataByDay',
   async () => fetchCovidVnExpressDataByDay(),
+);
+
+export const fetchCovidVnExpressDataByMapThunk = createAsyncThunk(
+  'home/fetchCovidVnExpressDataByMap',
+  async () => fetchCovidVnExpressDataByMap(),
 );

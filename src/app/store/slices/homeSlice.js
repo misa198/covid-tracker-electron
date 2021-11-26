@@ -1,9 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCovidVnExpressDataByDayThunk } from '../thunks/homeThunks';
+import {
+  fetchCovidVnExpressDataByDayThunk,
+  fetchCovidVnExpressDataByMapThunk
+} from '../thunks/homeThunks';
 
 const initialState = {
   updatedAt: null,
   dataByDay: {
+    data: [],
+    loading: false,
+    error: false,
+  },
+  dataByMap: {
     data: [],
     loading: false,
     error: false,
@@ -29,6 +37,22 @@ const homeSlice = createSlice({
     builder.addCase(fetchCovidVnExpressDataByDayThunk.rejected, (state) => {
       state.dataByDay.loading = false;
       state.dataByDay.error = true;
+    });
+
+    builder.addCase(fetchCovidVnExpressDataByMapThunk.pending, (state) => {
+      state.dataByMap.loading = true;
+    });
+    builder.addCase(
+      fetchCovidVnExpressDataByMapThunk.fulfilled,
+      (state, action) => {
+        state.dataByMap.loading = false;
+        state.dataByMap.data = action.payload.data;
+        state.updatedAt = action.payload.updatedAt;
+      },
+    );
+    builder.addCase(fetchCovidVnExpressDataByMapThunk.rejected, (state) => {
+      state.dataByMap.loading = false;
+      state.dataByMap.error = true;
     });
   },
 });
