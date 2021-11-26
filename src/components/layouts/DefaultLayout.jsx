@@ -20,7 +20,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const drawerWidth = 265;
 
@@ -118,6 +118,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer({ children }) {
   const theme = useTheme();
+  const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -169,7 +170,16 @@ export default function MiniDrawer({ children }) {
         <List>
           {drawerLinks.map(({ href, label, Icon }) => (
             <Link to={href} key={label}>
-              <ListItem button>
+              <ListItem
+                button
+                selected={pathname === href}
+                sx={{
+                  background:
+                    pathname === href
+                      ? `${theme.palette.primary.main} !important`
+                      : '',
+                }}
+              >
                 <ListItemIcon sx={{ pl: 1 }}>
                   <Icon />
                 </ListItemIcon>
