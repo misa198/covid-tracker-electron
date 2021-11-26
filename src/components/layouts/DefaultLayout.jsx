@@ -20,6 +20,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 265;
 
@@ -27,22 +28,27 @@ const drawerLinks = [
   {
     label: 'Home',
     Icon: HomeIcon,
+    href: '/',
   },
   {
     label: 'Vaccine',
     Icon: VaccinesOutlinedIcon,
+    href: '/vaccine',
   },
   {
     label: 'Global',
     Icon: LanguageOutlinedIcon,
+    href: '/global',
   },
   {
     label: 'News',
     Icon: FeedOutlinedIcon,
+    href: '/news',
   },
   {
     label: 'About',
     Icon: InfoOutlinedIcon,
+    href: '/about',
   },
 ];
 
@@ -139,7 +145,12 @@ export default function MiniDrawer({ children }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ userSelect: 'none' }}
+          >
             Covid-19 Tracker
           </Typography>
         </Toolbar>
@@ -156,13 +167,15 @@ export default function MiniDrawer({ children }) {
         </DrawerHeader>
         <Divider />
         <List>
-          {drawerLinks.map(({ label, Icon }) => (
-            <ListItem button key={label}>
-              <ListItemIcon sx={{ pl: 1 }}>
-                <Icon />
-              </ListItemIcon>
-              <ListItemText primary={label} />
-            </ListItem>
+          {drawerLinks.map(({ href, label, Icon }) => (
+            <Link to={href} key={label}>
+              <ListItem button>
+                <ListItemIcon sx={{ pl: 1 }}>
+                  <Icon />
+                </ListItemIcon>
+                <ListItemText primary={label} />
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

@@ -1,14 +1,20 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './themes/defaultTheme';
+import { BrowserRouter } from 'react-router-dom';
 import DefaultLayout from './components/layouts/DefaultLayout';
+import Screens from './screens';
+import theme from './themes/defaultTheme';
 
 const App = () => {
   return (
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <DefaultLayout>Hello World</DefaultLayout>
+        <BrowserRouter>
+          <DefaultLayout>
+            <Screens />
+          </DefaultLayout>
+        </BrowserRouter>
       </ThemeProvider>
     </>
   );

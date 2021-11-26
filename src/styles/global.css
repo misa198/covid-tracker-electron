@@ -16,3 +16,8 @@ img {
   -o-user-drag: none;
   user-drag: none;
 }
+
+a {
+  color: unset;
+  text-decoration: none;
+}

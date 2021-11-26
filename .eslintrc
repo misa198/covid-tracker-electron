@@ -9,10 +9,12 @@
     "react/function-component-definition": "off",
     "react/no-unused-class-component-methods": "off",
     "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "arrow-body-style": "off",
     "no-unused-vars": "warn",
     "import/no-import-module-exports": "off",
-    "import/no-relative-packages": "off"
+    "import/no-relative-packages": "off",
+    "import/order": "off"
   }
 }
