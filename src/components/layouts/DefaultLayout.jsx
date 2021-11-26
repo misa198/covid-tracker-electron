@@ -26,7 +26,7 @@ const drawerWidth = 265;
 
 const drawerLinks = [
   {
-    label: 'Home',
+    label: 'Trang chủ',
     Icon: HomeIcon,
     href: '/',
   },
@@ -36,17 +36,17 @@ const drawerLinks = [
     href: '/vaccine',
   },
   {
-    label: 'Global',
+    label: 'Thế giới',
     Icon: LanguageOutlinedIcon,
     href: '/global',
   },
   {
-    label: 'News',
+    label: 'Tin tức',
     Icon: FeedOutlinedIcon,
     href: '/news',
   },
   {
-    label: 'About',
+    label: 'Giới thiệu',
     Icon: InfoOutlinedIcon,
     href: '/about',
   },

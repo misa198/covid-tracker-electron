@@ -13,7 +13,7 @@ const OfflineScreen = () => {
       }}
     >
       <WifiOffOutlinedIcon sx={{ fontSize: 140, mb: 2 }} />
-      <Typography variant="h5">No internet connection</Typography>
+      <Typography variant="h5">Bạn đang ngoại tuyến</Typography>
     </Box>
   );
 };
