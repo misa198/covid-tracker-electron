@@ -1,7 +1,8 @@
+import '@fontsource/roboto';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { Offline, Online } from 'react-detect-offline';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import OfflineScreen from './components/common/OfflineScreen';
 import DefaultLayout from './components/layouts/DefaultLayout';
 import Screens from './screens';
@@ -12,7 +13,7 @@ const App = () => {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <HashRouter>
           <DefaultLayout>
             <Online>
               <Screens />
@@ -21,7 +22,7 @@ const App = () => {
               <OfflineScreen />
             </Offline>
           </DefaultLayout>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </>
   );

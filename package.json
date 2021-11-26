@@ -1,13 +1,37 @@
 {
   "name": "covid-19-tracker-electron",
+  "productName": "Covid-19 Tracker",
   "version": "1.0.0",
   "license": "MIT",
   "author": "Thanh Vu <misa198>",
   "private": true,
-  "main": "public/electron.js",
+  "main": "electron/main.js",
+  "homepage": "./",
+  "build": {
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "icon": "build/icon.icns"
+    }
+  },
+  "scripts": {
+    "react:start": "export BROWSER=none && react-scripts start",
+    "react:build": "react-scripts build",
+    "electron:start": "wait-on tcp:3000 && electron .",
+    "electron:build": "mkdir build/src && cp -r electron/. build/electron",
+    "clean": "rm -rf build dist",
+    "package": "electron-builder build --mac -c.extraMetadata.main=build/electron/main.js --publish never",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build": "yarn clean && yarn react:build && yarn electron:build && yarn package",
+    "dev": "concurrently -k \"yarn react:start\" \"yarn electron:start\""
+  },
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
+    "@fontsource/roboto": "^4.5.1",
     "@mui/icons-material": "^5.2.0",
     "@mui/material": "^5.2.1",
     "@mui/styles": "^5.2.1",
@@ -17,6 +41,7 @@
     "@testing-library/user-event": "^12.1.10",
     "apexcharts": "^3.30.0",
     "axios": "^0.24.0",
+    "electron-is-dev": "^2.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-apexcharts": "^1.3.9",
@@ -27,20 +52,6 @@
     "react-scripts": "4.0.3",
     "slugify": "^1.6.3",
     "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "concurrently -k \"BROWSER=none yarn start\" \"yarn electron\"",
-    "electron": "wait-on tcp:3000 && electron ."
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -57,7 +68,7 @@
   "devDependencies": {
     "concurrently": "^6.4.0",
     "electron": "^16.0.2",
-    "electron-is-dev": "^2.0.0",
+    "electron-builder": "^22.14.5",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "19.0.1",
     "eslint-config-prettier": "^8.3.0",

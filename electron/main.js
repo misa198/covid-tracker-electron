@@ -1,6 +1,7 @@
 const path = require('path');
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
+const url = require('url');
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -13,12 +14,14 @@ const createWindow = () => {
     },
   });
 
-  win.loadURL(
-    isDev
-      ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`,
-  );
-
+  const startUrl = isDev
+    ? 'http://localhost:3000'
+    : url.format({
+        pathname: path.join(__dirname, '../index.html'),
+        protocol: 'file:',
+        slashes: true,
+      });
+  win.loadURL(startUrl);
   if (isDev) {
     win.webContents.openDevTools();
   }
@@ -31,7 +34,7 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('activate', () => {
+app.on('activate', () => { 
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
