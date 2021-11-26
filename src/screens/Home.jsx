@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { fetchCovidVnExpressDataByDayThunk } from '../app/store/thunks/homeThunks';
 import NewEpidemicOverview from '../components/screens/home/NewEpidemicOverview';
 import HomeOverview from '../components/screens/home/Overview';
+import VietnamCasesByDayChart from '../components/screens/home/VietnamCasesByDayChart';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ const HomeScreen = () => {
         </Box>
         <Box mt={4}>
           <NewEpidemicOverview />
+        </Box>
+        <Box mt={4}>
+          <VietnamCasesByDayChart />
         </Box>
       </Container>
     </Box>
