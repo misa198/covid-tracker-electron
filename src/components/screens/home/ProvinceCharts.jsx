@@ -44,7 +44,7 @@ const ProvinceCharts = () => {
   }, [dataByMap.data]);
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={4}>
       <Grid item xs={6}>
         <Box sx={{ position: 'relative' }}>
           <Loading hide={!dataByMap.loading} />

@@ -1,13 +1,15 @@
 import axios from 'axios';
 import {
   covidVnExpressByDayApiUrl,
-  covidVnExpressSiteUrl,
+  covidVnExpressByLocationApiUrl,
   covidVnExpressByMapApiUrl,
+  covidVnExpressSiteUrl,
 } from '../../constants/configs';
 import { vnExpressUpdateDateTime } from '../../constants/regex';
 import {
   formatVnExpressDataByDay,
   formatVnExpressDataByMap,
+  formatVnExpressDataByLocation,
 } from '../../utils/formatApiData';
 
 export const fetchCovidVnExpressDataByDay = async () => {
@@ -31,6 +33,15 @@ export const fetchCovidVnExpressDataByDay = async () => {
 export const fetchCovidVnExpressDataByMap = async () => {
   const response = await axios.get(covidVnExpressByMapApiUrl);
   const parsedBody = formatVnExpressDataByMap(response.data);
+  return {
+    data: parsedBody,
+  };
+};
+
+export const fetchCovidVnExpressDataByLocation = async () => {
+  const response = await axios.get(covidVnExpressByLocationApiUrl);
+  const body = response.data;
+  const parsedBody = formatVnExpressDataByLocation(body);
   return {
     data: parsedBody,
   };

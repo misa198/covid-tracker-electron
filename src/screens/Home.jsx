@@ -3,10 +3,12 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   fetchCovidVnExpressDataByDayThunk,
-  fetchCovidVnExpressDataByMapThunk
+  fetchCovidVnExpressDataByLocationThunk,
+  fetchCovidVnExpressDataByMapThunk,
 } from '../app/store/thunks/homeThunks';
 import NewEpidemicOverview from '../components/screens/home/NewEpidemicOverview';
 import HomeOverview from '../components/screens/home/Overview';
+import ProvinceByDayChart from '../components/screens/home/ProvinceByDayChart';
 import ProvinceCharts from '../components/screens/home/ProvinceCharts';
 import VietnamCasesByDayChart from '../components/screens/home/VietnamCasesByDayChart';
 
@@ -16,6 +18,7 @@ const HomeScreen = () => {
   useEffect(() => {
     dispatch(fetchCovidVnExpressDataByDayThunk());
     dispatch(fetchCovidVnExpressDataByMapThunk());
+    dispatch(fetchCovidVnExpressDataByLocationThunk());
   }, [dispatch]);
 
   return (
@@ -32,6 +35,9 @@ const HomeScreen = () => {
         </Box>
         <Box mt={4}>
           <ProvinceCharts />
+        </Box>
+        <Box mt={4}>
+          <ProvinceByDayChart />
         </Box>
       </Container>
     </Box>
