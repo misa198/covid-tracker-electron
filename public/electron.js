@@ -4,11 +4,12 @@ const isDev = require('electron-is-dev');
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    minWidth: 800,
-    minHeight: 600,
+    minWidth: 1000,
+    minHeight: 800,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
+      webSecurity: false,
     },
   });
 
@@ -19,7 +20,7 @@ const createWindow = () => {
   );
 
   if (isDev) {
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
   }
 };
 

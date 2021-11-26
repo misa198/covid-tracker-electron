@@ -12,11 +12,12 @@
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "react/jsx-no-undef": "warn",
-    "arrow-body-style": "off",
-    "no-unused-vars": "warn",
     "import/no-import-module-exports": "off",
     "import/no-relative-packages": "off",
     "import/prefer-default-export": "off",
-    "import/order": "off"
+    "import/order": "off",
+    "arrow-body-style": "off",
+    "no-unused-vars": "warn",
+    "prefer-template": "off"
   }
 }
