@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "rules": {
+    "react/no-unstable-nested-components": "off",
+    "react/no-namespace": "off",
+    "react/prefer-exact-props": "off",
+    "react/no-arrow-function-lifecycle": "off",
+    "react/no-invalid-html-attribute": "off",
+    "react/function-component-definition": "off",
+    "react/no-unused-class-component-methods": "off",
+    "react/react-in-jsx-scope": "off",
+    "arrow-body-style": "off",
+    "import/no-import-module-exports": "off",
+    "import/no-relative-packages": "off"
+  }
+}
