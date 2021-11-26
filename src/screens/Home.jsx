@@ -1,12 +1,29 @@
+import { Box, Container } from '@mui/material';
 import { useEffect } from 'react';
-import { fetchCovidVnExpressDataByDay } from '../app/apis/vnExpressApi';
+import { useDispatch } from 'react-redux';
+import { fetchCovidVnExpressDataByDayThunk } from '../app/store/thunks/homeThunks';
+import NewEpidemicOverview from '../components/screens/home/NewEpidemicOverview';
+import HomeOverview from '../components/screens/home/Overview';
 
 const HomeScreen = () => {
-  useEffect(() => {
-    fetchCovidVnExpressDataByDay().then(console.log);
-  }, []);
+  const dispatch = useDispatch();
 
-  return <>Home</>;
+  useEffect(() => {
+    dispatch(fetchCovidVnExpressDataByDayThunk());
+  }, [dispatch]);
+
+  return (
+    <Box sx={{ width: '100%', py: 4 }}>
+      <Container>
+        <Box>
+          <HomeOverview />
+        </Box>
+        <Box mt={4}>
+          <NewEpidemicOverview />
+        </Box>
+      </Container>
+    </Box>
+  );
 };
 
 export default HomeScreen;

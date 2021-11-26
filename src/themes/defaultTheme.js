@@ -6,6 +6,17 @@ const theme = createTheme({
     primary: {
       main: '#d84315',
     },
+    common: {
+      secondaryPaper: '#374151',
+      confirmed: '#fb8c00',
+      confirmedBg: '#fff9c4',
+      recovered: '#10b981',
+      recoveredBg: '#b9f6ca',
+      curing: '#455a64',
+      curingBg: '#cfd8dc',
+      deaths: '#d84315',
+      deathsBg: '#ffccbc',
+    },
     text: {
       primary: '#fff',
     },

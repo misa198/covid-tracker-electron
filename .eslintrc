@@ -18,6 +18,7 @@
     "import/order": "off",
     "arrow-body-style": "off",
     "no-unused-vars": "warn",
+    "no-param-reassign": "off",
     "prefer-template": "off"
   }
 }
