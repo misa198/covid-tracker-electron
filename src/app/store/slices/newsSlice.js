@@ -5,12 +5,17 @@ const initialState = {
   data: [],
   loading: false,
   error: false,
+  webviewUrl: '',
 };
 
 const newsSlice = createSlice({
   name: 'news',
   initialState,
-  reducers: {},
+  reducers: {
+    setNews: (state, action) => {
+      state.webviewUrl = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchKompaNewsThunk.pending, (state) => {
       state.loading = true;
@@ -28,4 +33,4 @@ const newsSlice = createSlice({
 });
 
 export default newsSlice.reducer;
-export const { actions } = newsSlice.actions;
+export const newsActions = newsSlice.actions;

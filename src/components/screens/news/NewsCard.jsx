@@ -1,9 +1,21 @@
 import { Box, Grid, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { newsActions } from '../../../app/store/slices/newsSlice';
 
 const NewsCard = ({ news }) => {
+  const dispatch = useDispatch();
+
+  const onClick = () => {
+    dispatch(newsActions.setNews(news.url));
+  };
+
   return (
-    <Grid container sx={{ cursor: 'pointer', userSelect: 'none' }}>
+    <Grid
+      container
+      sx={{ cursor: 'pointer', userSelect: 'none' }}
+      onClick={onClick}
+    >
       <Grid item xs={4}>
         <Box
           sx={{

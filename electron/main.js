@@ -13,6 +13,7 @@ const createWindow = () => {
       nodeIntegration: true,
       enableRemoteModule: true,
       webSecurity: false,
+      webviewTag: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
