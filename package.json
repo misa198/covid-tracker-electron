@@ -13,7 +13,16 @@
       "node_modules/**/*"
     ],
     "mac": {
+      "target": [
+        "dmg"
+      ],
       "icon": "build/icon.icns"
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "icon": "assets/icon.icns"
     }
   },
   "scripts": {
@@ -22,7 +31,7 @@
     "electron:start": "wait-on tcp:3000 && electron .",
     "electron:build": "mkdir build/src && cp -r electron/. build/electron",
     "clean": "rm -rf build dist",
-    "package": "electron-builder build --mac -c.extraMetadata.main=build/electron/main.js --publish never",
+    "package": "electron-builder build --mac --linux -c.extraMetadata.main=build/electron/main.js --publish never",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "yarn clean && yarn react:build && yarn electron:build && yarn package",
@@ -44,7 +53,6 @@
     "apexcharts": "^3.30.0",
     "axios": "^0.24.0",
     "axios-cache-adapter": "^2.7.3",
-    "electron": "^16.0.2",
     "electron-is-dev": "^2.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -71,6 +79,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.4.0",
+    "electron": "^16.0.2",
     "electron-builder": "^22.14.5",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "19.0.1",
