@@ -16,13 +16,16 @@
     "import/no-relative-packages": "off",
     "import/prefer-default-export": "off",
     "import/order": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "import/newline-after-import": "off",
+    "import/named": "off",
     "arrow-body-style": "off",
     "no-undef": "off",
     "no-unused-vars": "warn",
     "no-param-reassign": "off",
     "prefer-template": "off",
-    "import/no-named-as-default": "off",
-    "import/no-named-as-default-member": "off",
-    "import/named": "off"
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off"
   }
 }

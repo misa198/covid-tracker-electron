@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { fetchKompaWorldwideCasesThunk } from '../app/store/thunks/worldwideThunk';
 import WorldwideOverview from '../components/screens/worldwide/Overview';
 
-const Worldwide = () => {
+const WorldwideScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,4 +18,4 @@ const Worldwide = () => {
   );
 };
 
-export default Worldwide;
+export default WorldwideScreen;

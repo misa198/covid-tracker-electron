@@ -10,7 +10,7 @@ import VaccineOverview from '../components/screens/vaccine/Overview';
 import ProvincesTable from '../components/screens/vaccine/ProvincesTable';
 import TotalDosesByDayChart from '../components/screens/vaccine/TotalDosesByDayChart';
 
-const Vaccine = () => {
+const VaccineScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,4 +36,4 @@ const Vaccine = () => {
   );
 };
 
-export default Vaccine;
+export default VaccineScreen;

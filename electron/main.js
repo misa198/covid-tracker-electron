@@ -1,5 +1,5 @@
 const path = require('path');
-const { app, BrowserWindow } = require('electron');
+const { app, ipcMain, shell, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
 const url = require('url');
 
@@ -13,6 +13,7 @@ const createWindow = () => {
       nodeIntegration: true,
       enableRemoteModule: true,
       webSecurity: false,
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
 
