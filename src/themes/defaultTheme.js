@@ -16,6 +16,8 @@ const theme = createTheme({
       curingBg: '#cfd8dc',
       deaths: '#d84315',
       deathsBg: '#ffccbc',
+      secondDose: '#10b981',
+      firstDose: '#81b983',
     },
     text: {
       primary: '#fff',

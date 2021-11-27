@@ -150,7 +150,7 @@ export default function MiniDrawer({ children }) {
             variant="h6"
             noWrap
             component="div"
-            sx={{ userSelect: 'none' }}
+            sx={{ userSelect: 'none', fontWeight: 'bold' }}
           >
             Covid-19 Tracker
           </Typography>

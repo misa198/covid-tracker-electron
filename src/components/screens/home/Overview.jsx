@@ -12,7 +12,7 @@ const Overview = () => {
   const data = useMemo(() => {
     const { dataByDay } = homeState;
     if (dataByDay.data.length === 0) {
-      return null;
+      return {};
     }
     const today = dataByDay.data[dataByDay.data.length - 1];
     const yesterday = dataByDay.data[dataByDay.data.length - 2];
@@ -63,33 +63,33 @@ const Overview = () => {
           <Grid item xs={6}>
             <CaseCard
               type="confirmed"
-              newCases={data?.confirmed}
-              totalCases={data?.totalConfirmed}
-              isToday={data?.isToday}
+              newCases={data.confirmed}
+              totalCases={data.totalConfirmed}
+              isToday={data.isToday}
             />
           </Grid>
           <Grid item xs={6}>
             <CaseCard
               type="recovered"
-              newCases={data?.recovered}
-              totalCases={data?.totalRecovered}
-              isToday={data?.isToday}
+              newCases={data.recovered}
+              totalCases={data.totalRecovered}
+              isToday={data.isToday}
             />
           </Grid>
           <Grid item xs={6}>
             <CaseCard
               type="deaths"
-              newCases={data?.deaths}
-              totalCases={data?.totalDeaths}
-              isToday={data?.isToday}
+              newCases={data.deaths}
+              totalCases={data.totalDeaths}
+              isToday={data.isToday}
             />
           </Grid>
           <Grid item xs={6}>
             <CaseCard
               type="curing"
-              newCases={data?.curing}
-              totalCases={data?.totalCuring}
-              isToday={data?.isToday}
+              newCases={data.curing}
+              totalCases={data.totalCuring}
+              isToday={data.isToday}
             />
           </Grid>
         </Grid>

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import HomeScreen from './Home';
+import Vaccine from './Vaccine';
 import Worldwide from './Worldwide';
 
 const Screens = () => {
@@ -8,6 +9,11 @@ const Screens = () => {
       exact: true,
       path: '/',
       element: <HomeScreen />,
+    },
+    {
+      exact: true,
+      path: '/vaccine',
+      element: <Vaccine />,
     },
     {
       exact: true,
