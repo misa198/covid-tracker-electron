@@ -84,4 +84,4 @@ const homeSlice = createSlice({
 });
 
 export default homeSlice.reducer;
-export const homeActions = homeSlice;
+export const homeActions = homeSlice.actions;

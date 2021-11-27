@@ -38,7 +38,7 @@ const drawerLinks = [
   {
     label: 'Thế giới',
     Icon: LanguageOutlinedIcon,
-    href: '/global',
+    href: '/worldwide',
   },
   {
     label: 'Tin tức',

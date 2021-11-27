@@ -3,7 +3,7 @@ export function formatNumber(number) {
     style: 'currency',
     currency: 'VND',
   }).format(number);
-  return temp.slice(1, temp.length);
+  return temp.trim().slice(1, temp.length);
 }
 
 export function formatNumberWithComma(num, digits = 1) {
