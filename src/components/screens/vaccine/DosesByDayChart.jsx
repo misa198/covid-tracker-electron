@@ -66,7 +66,10 @@ const DosesByDayChart = () => {
   }, [overview.data, selectedRange]);
 
   return (
-    <Paper sx={{ overflow: 'hidden', py: 4, position: 'relative' }}>
+    <Paper
+      elevation={2}
+      sx={{ overflow: 'hidden', py: 4, position: 'relative' }}
+    >
       <Loading hide={!overview.loading} />
       <Typography
         variant="h6"

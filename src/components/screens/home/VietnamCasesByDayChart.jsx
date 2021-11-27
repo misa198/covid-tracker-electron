@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import Loading from '../../common/Loading';
 import {
   formatNumber,
-  formatNumberWithComma
+  formatNumberWithComma,
 } from '../../../utils/formatNumber';
 
 const ranges = [
@@ -66,7 +66,10 @@ const VietnamCasesByDayChart = () => {
   }, [dataByDay.data, selectedRange]);
 
   return (
-    <Paper sx={{ overflow: 'hidden', py: 4, position: 'relative' }}>
+    <Paper
+      elevation={2}
+      sx={{ overflow: 'hidden', py: 4, position: 'relative' }}
+    >
       <Loading hide={!homeState.dataByDay.loading} />
       <Typography
         variant="h6"

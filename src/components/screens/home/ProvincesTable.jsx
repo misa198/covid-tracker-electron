@@ -10,7 +10,7 @@ import {
   TableRow,
   TableSortLabel,
   Toolbar,
-  Typography
+  Typography,
 } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
 import { visuallyHidden } from '@mui/utils';
@@ -220,7 +220,7 @@ export default function EnhancedTable() {
   return (
     <Box sx={{ width: '100%', position: 'relative' }}>
       <Loading hide={!dataByMap.loading} />
-      <Paper sx={{ width: '100%', p: 2 }}>
+      <Paper elevation={2} sx={{ width: '100%', p: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table

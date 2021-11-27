@@ -27,7 +27,7 @@ const Overview = () => {
   const overview = useSelector((state) => state.vaccine.overview);
 
   return (
-    <Paper sx={{ p: 2, position: 'relative' }}>
+    <Paper elevation={2} sx={{ p: 2, position: 'relative' }}>
       <Loading hide={!overview.loading} />
       <Grid container spacing={2} sx={{ mb: 3 }}>
         <Grid item xs={4} sx={{ color: theme.palette.common.secondDose }}>

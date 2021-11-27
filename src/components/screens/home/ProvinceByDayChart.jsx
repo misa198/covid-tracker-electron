@@ -77,7 +77,7 @@ const ProvinceByDayChart = () => {
   };
 
   return (
-    <Paper sx={{ p: 2, py: 4, position: 'relative' }}>
+    <Paper elevation={2} sx={{ p: 2, py: 4, position: 'relative' }}>
       <Loading hide={!dataByLocation.loading} />
       <Typography
         variant="h6"
