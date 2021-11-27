@@ -5,7 +5,6 @@ export const fetchVaccineDataThunk = createAsyncThunk(
   'vaccine/fetchVaccineData',
   async () => {
     const response = await fetchZingNewVaccineData();
-    console.log(response);
     return response;
   },
 );
