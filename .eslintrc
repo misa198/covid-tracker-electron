@@ -19,6 +19,8 @@
     "arrow-body-style": "off",
     "no-unused-vars": "warn",
     "no-param-reassign": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
     "prefer-template": "off"
   }
 }

@@ -92,6 +92,10 @@ export const formatVnExpressDataByMap = (data) => {
   return result;
 };
 
+/**
+ * @param data {string} - value from api (https://vnexpress.net/microservice/sheet/type/covid19_2021_by_location)
+ * @returns {Object} - formatted data
+ */
 export const formatVnExpressDataByLocation = (data) => {
   const lines = data.split('\n');
   const result = [];

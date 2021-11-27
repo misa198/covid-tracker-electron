@@ -10,6 +10,7 @@ import NewEpidemicOverview from '../components/screens/home/NewEpidemicOverview'
 import HomeOverview from '../components/screens/home/Overview';
 import ProvinceByDayChart from '../components/screens/home/ProvinceByDayChart';
 import ProvinceCharts from '../components/screens/home/ProvinceCharts';
+import ProvincesTable from '../components/screens/home/ProvincesTable';
 import VietnamCasesByDayChart from '../components/screens/home/VietnamCasesByDayChart';
 
 const HomeScreen = () => {
@@ -38,6 +39,9 @@ const HomeScreen = () => {
         </Box>
         <Box mt={4}>
           <ProvinceByDayChart />
+        </Box>
+        <Box mt={4}>
+          <ProvincesTable />
         </Box>
       </Container>
     </Box>

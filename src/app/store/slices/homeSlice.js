@@ -29,6 +29,7 @@ const homeSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // By day
     builder.addCase(fetchCovidVnExpressDataByDayThunk.pending, (state) => {
       state.dataByDay.loading = true;
     });
@@ -45,6 +46,7 @@ const homeSlice = createSlice({
       state.dataByDay.error = true;
     });
 
+    // By map
     builder.addCase(fetchCovidVnExpressDataByMapThunk.pending, (state) => {
       state.dataByMap.loading = true;
     });
@@ -60,6 +62,7 @@ const homeSlice = createSlice({
       state.dataByMap.error = true;
     });
 
+    // By location
     builder.addCase(fetchCovidVnExpressDataByLocationThunk.pending, (state) => {
       state.dataByLocation.loading = true;
     });

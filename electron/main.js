@@ -7,7 +7,7 @@ const createWindow = () => {
   const win = new BrowserWindow({
     minWidth: 1000,
     minHeight: 800,
-    width: 1000,
+    width: isDev ? 1500 : 1000,
     height: 800,
     webPreferences: {
       nodeIntegration: true,
@@ -36,7 +36,7 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('activate', () => { 
+app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
