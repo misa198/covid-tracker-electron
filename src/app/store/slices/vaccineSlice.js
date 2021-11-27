@@ -8,7 +8,7 @@ const initialState = {
   overview: {
     data: {
       dayDoses: [],
-      totalDoses: [],
+      summaryDoses: [],
       firstRatio: 0,
       secondRatio: 0,
       firstTotal: 0,

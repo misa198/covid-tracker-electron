@@ -17,11 +17,12 @@
     "import/prefer-default-export": "off",
     "import/order": "off",
     "arrow-body-style": "off",
+    "no-undef": "off",
     "no-unused-vars": "warn",
     "no-param-reassign": "off",
+    "prefer-template": "off",
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
-    "import/named": "off",
-    "prefer-template": "off"
+    "import/named": "off"
   }
 }

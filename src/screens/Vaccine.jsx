@@ -8,6 +8,7 @@ import {
 import DosesByDayChart from '../components/screens/vaccine/DosesByDayChart';
 import VaccineOverview from '../components/screens/vaccine/Overview';
 import ProvincesTable from '../components/screens/vaccine/ProvincesTable';
+import TotalDosesByDayChart from '../components/screens/vaccine/TotalDosesByDayChart';
 
 const Vaccine = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ const Vaccine = () => {
       </Box>
       <Box mt={4}>
         <DosesByDayChart />
+      </Box>
+      <Box mt={4}>
+        <TotalDosesByDayChart />
       </Box>
       <Box mt={4}>
         <ProvincesTable />
