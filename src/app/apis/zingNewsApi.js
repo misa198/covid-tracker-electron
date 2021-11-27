@@ -1,4 +1,7 @@
-import { zingVaccineApiUrl } from '../../constants/configs';
+import {
+  zingVaccineApiUrl,
+  zingVaccineByLocationApiUrl,
+} from '../../constants/configs';
 import axios from './axios';
 
 export const fetchZingNewVaccineData = async () => {
@@ -27,4 +30,16 @@ export const fetchZingNewVaccineData = async () => {
     secondTotal: data.second.total,
     secondRatio: data.secondRatio,
   };
+};
+
+export const fetchZingNewVaccineDataByLocation = async () => {
+  const response = await axios.get(zingVaccineByLocationApiUrl);
+  const { data } = response.data;
+  const res = data.map((province) => ({
+    name: province.provinceName,
+    firstDose: province.totalOnceInjected,
+    secondDose: province.totalTwiceInjected,
+    population: province.population,
+  }));
+  return res;
 };

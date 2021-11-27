@@ -72,7 +72,7 @@ const DosesByDayChart = () => {
         variant="h6"
         sx={{ fontWeight: 'bold', textAlign: 'center', mb: 3 }}
       >
-        Diễn biến tiêm chủng tại Việt Nam
+        Diễn biến tiêm chủng tại Việt Nam theo ngày
       </Typography>
       <Chart
         options={{
