@@ -9,6 +9,7 @@ const createWindow = () => {
     minHeight: 800,
     width: isDev ? 1500 : 1000,
     height: 800,
+    autoHideMenuBar: isDev ? false : true,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
@@ -17,8 +18,6 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
-
-  Menu.setApplicationMenu(false);
 
   const startUrl = isDev
     ? 'http://localhost:3000'
@@ -30,6 +29,8 @@ const createWindow = () => {
   win.loadURL(startUrl);
   if (isDev) {
     win.webContents.openDevTools();
+  } else {
+    Menu.setApplicationMenu(false);
   }
 };
 
