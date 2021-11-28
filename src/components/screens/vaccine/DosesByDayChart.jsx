@@ -131,12 +131,12 @@ const DosesByDayChart = () => {
         }}
         series={[
           {
-            name: 'Mũi 2',
+            name: 'Tiêm mũi thứ 2',
             data: chartData.first,
             type: 'bar',
           },
           {
-            name: 'Mũi 1',
+            name: 'Tiêm mũi thứ 1',
             data: chartData.second,
             type: 'bar',
           },

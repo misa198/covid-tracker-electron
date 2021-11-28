@@ -50,7 +50,7 @@ const TotalDosesByDayChart = () => {
       data.length,
     );
     const dates = selectedData.map((item) => item.date);
-    const firstDose = selectedData.map((item) => item.first);
+    const firstDose = selectedData.map((item) => item.first + item.second);
     const secondDose = selectedData.map((item) => item.second);
     setDataChart({
       dates,
@@ -81,7 +81,7 @@ const TotalDosesByDayChart = () => {
           ],
           chart: {
             id: 'dose-by-day-chart',
-            stacked: true,
+            stacked: false,
             zoom: false,
             toolbar: {
               show: false,
@@ -127,12 +127,12 @@ const TotalDosesByDayChart = () => {
         }}
         series={[
           {
-            name: 'Tiêm 1 mũi',
+            name: 'Đã được tiêm',
             data: dataChart.firstDose,
             type: 'area',
           },
           {
-            name: 'Tiêm 2 mũi',
+            name: 'Tiêm đủ 2 mũi',
             data: dataChart.secondDose,
             type: 'area',
           },
