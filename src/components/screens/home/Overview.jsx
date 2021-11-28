@@ -17,16 +17,17 @@ const Overview = () => {
     const today = dataByDay.data[dataByDay.data.length - 1];
     const yesterday = dataByDay.data[dataByDay.data.length - 2];
     const isToday =
-      homeState.updatedAt.split(', ')[1].split('/') < new Date().getDate();
+      parseInt(homeState.updatedAt.split(', ')[1].split('/'), 10) ===
+      new Date().getDate();
     return {
       isToday,
       confirmed: isToday ? today.newConfirmed : yesterday.newConfirmed,
       recovered: isToday ? today.newRecovered : yesterday.newRecovered,
       deaths: isToday ? today.newDeaths : yesterday.newDeaths,
       curing: isToday ? today.newCuring : yesterday.newCuring,
-      totalConfirmed: today.totalConfirmed,
-      totalRecovered: today.totalRecovered,
-      totalDeaths: today.totalDeaths,
+      totalConfirmed: today.totalConfirmed2020,
+      totalRecovered: today.totalRecovered2020,
+      totalDeaths: today.totalDeaths2020,
       totalCuring: today.totalCuring,
     };
   }, [homeState.dataByDay]);

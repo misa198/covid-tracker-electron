@@ -52,7 +52,8 @@ const CaseCard = ({ type, hideNew, newCases, totalCases, isToday }) => {
           color={type === 'curing' ? bg : color}
           sx={{ textAlign: 'center' }}
         >
-          {isToday ? 'Hôm nay' : 'Hôm qua'}: {formatNumber(newCases || 0)}
+          {isToday ? 'Hôm nay' : 'Hôm qua'}: {newCases >= 0 ? '+' : '-'}
+          {formatNumber(newCases || 0)}
         </Typography>
       )}
 

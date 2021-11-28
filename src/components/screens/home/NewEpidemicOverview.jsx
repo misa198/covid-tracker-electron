@@ -14,8 +14,8 @@ const NewEpidemicOverview = () => {
     }
     const today = dataByDay.data[dataByDay.data.length - 1];
     return {
-      confirmed: today.totalConfirmed2020,
-      deaths: today.totalDeaths2020,
+      confirmed: today.totalDomesticConfirmed,
+      deaths: today.totalDeaths,
     };
   }, [homeState.dataByDay]);
 
