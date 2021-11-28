@@ -1,5 +1,5 @@
 const path = require('path');
-const { app, ipcMain, shell, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const isDev = require('electron-is-dev');
 const url = require('url');
 
@@ -17,6 +17,8 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+
+  Menu.setApplicationMenu(false);
 
   const startUrl = isDev
     ? 'http://localhost:3000'
