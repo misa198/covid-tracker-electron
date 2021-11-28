@@ -8,10 +8,22 @@
   "main": "electron/main.js",
   "homepage": "./",
   "build": {
+    "appId": "com.misa198.covid-19-tracker",
     "files": [
       "build/**/*",
       "node_modules/**/*"
     ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
     "mac": {
       "target": [
         "dmg"
@@ -31,7 +43,7 @@
     "electron:start": "wait-on tcp:3000 && electron .",
     "electron:build": "mkdir build/src && cp -r electron/. build/electron",
     "clean": "rm -rf build dist",
-    "package": "electron-builder build --mac --linux -c.extraMetadata.main=build/electron/main.js --publish never",
+    "package": "electron-builder build -c.extraMetadata.main=build/electron/main.js --publish never",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "yarn clean && yarn react:build && yarn electron:build && yarn package",
