@@ -7,8 +7,8 @@ const createWindow = () => {
   const win = new BrowserWindow({
     minWidth: 1000,
     minHeight: 800,
-    width: isDev ? 1500 : 1000,
-    height: 800,
+    width: isDev ? 1500 : 1300,
+    height: 700,
     autoHideMenuBar: isDev ? false : true,
     webPreferences: {
       nodeIntegration: true,
