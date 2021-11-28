@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchKompaNews } from '../../apis/kompaApi';
+import { fetchCovidVnExpressNews } from '../../apis/vnExpressApi';
 
-export const fetchKompaNewsThunk = createAsyncThunk(
-  'news/fetchKompaNews',
+export const fetchCovidVnExpressNewsThunk = createAsyncThunk(
+  'news/fetchCovidVnExpressNews',
   async () => {
-    const response = await fetchKompaNews();
-    return response.data.data.topTrueNews;
+    const response = await fetchCovidVnExpressNews();
+    return response.data;
   },
 );

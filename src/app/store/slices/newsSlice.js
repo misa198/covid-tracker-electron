@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchKompaNewsThunk } from '../thunks/newsThunk';
+import { fetchCovidVnExpressNewsThunk } from '../thunks/newsThunk';
 
 const initialState = {
   data: [],
@@ -17,15 +17,15 @@ const newsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchKompaNewsThunk.pending, (state) => {
+    builder.addCase(fetchCovidVnExpressNewsThunk.pending, (state) => {
       state.loading = true;
       state.error = false;
     });
-    builder.addCase(fetchKompaNewsThunk.fulfilled, (state, action) => {
+    builder.addCase(fetchCovidVnExpressNewsThunk.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
     });
-    builder.addCase(fetchKompaNewsThunk.rejected, (state) => {
+    builder.addCase(fetchCovidVnExpressNewsThunk.rejected, (state) => {
       state.loading = false;
       state.error = true;
     });

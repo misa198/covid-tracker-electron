@@ -20,17 +20,23 @@ const Overview = () => {
         Nguồn dữ liệu
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 1 }}>
-        <Typography variant="subtitle2" sx={{ textAlign: 'center', mr: 1.5 }}>
-          VnExpress
-        </Typography>
-
         <Typography variant="subtitle2" sx={{ textAlign: 'center' }}>
-          ZingNews
+          Dịch bệnh trong nước - VnExpress
+        </Typography>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 1 }}>
+        <Typography variant="subtitle2" sx={{ textAlign: 'center' }}>
+          Dịch bệnh trên thế giới - Kompa
+        </Typography>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 1 }}>
+        <Typography variant="subtitle2" sx={{ textAlign: 'center' }}>
+          Tin tức - VnExpress
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
         <Typography variant="subtitle2" sx={{ textAlign: 'center' }}>
-          Kompa
+          Vaccine - ZingNews
         </Typography>
       </Box>
     </Paper>

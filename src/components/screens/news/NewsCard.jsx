@@ -2,12 +2,14 @@ import { Box, Grid, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { newsActions } from '../../../app/store/slices/newsSlice';
+import { defaultNewsCoverImage } from '../../../constants/configs';
+import { formatTime } from '../../../utils/formatTime';
 
 const NewsCard = ({ news }) => {
   const dispatch = useDispatch();
 
   const onClick = () => {
-    dispatch(newsActions.setNews(news.url));
+    dispatch(newsActions.setNews(news.share_url));
   };
 
   return (
@@ -23,7 +25,9 @@ const NewsCard = ({ news }) => {
             paddingTop: '62.22%',
             overflow: 'hidden',
             borderRadius: '0.2rem',
-            backgroundImage: `url(${news.picture})`,
+            backgroundImage: `url(${
+              news.off_thumb ? defaultNewsCoverImage : news.thumbnail_url
+            })`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -35,17 +39,11 @@ const NewsCard = ({ news }) => {
             {news.title}
           </Typography>
           <Typography variant="body2" mb={1}>
-            {news.content}...
+            {news.lead}...
           </Typography>
           <Box sx={{ mb: 1.5 }}>
             <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-              {news.publishedDate}
-            </Typography>
-          </Box>
-          <Box>
-            <Typography variant="subtile2">Theo</Typography>{' '}
-            <Typography variant="subtile2" sx={{ fontStyle: 'italic' }}>
-              {news.siteName}
+              {formatTime(news.publish_time * 1000)}
             </Typography>
           </Box>
         </Box>

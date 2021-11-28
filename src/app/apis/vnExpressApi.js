@@ -4,6 +4,7 @@ import {
   covidVnExpressByLocationApiUrl,
   covidVnExpressByMapApiUrl,
   covidVnExpressSiteUrl,
+  covidVnExpressNewsApiUrl,
 } from '../../constants/configs';
 import { vnExpressUpdateDateTime } from '../../constants/regex';
 import {
@@ -45,4 +46,9 @@ export const fetchCovidVnExpressDataByLocation = async () => {
   return {
     data: parsedBody,
   };
+};
+
+export const fetchCovidVnExpressNews = async () => {
+  const response = await axios.get(covidVnExpressNewsApiUrl);
+  return response.data.data[Object.keys(response.data.data)[0]];
 };

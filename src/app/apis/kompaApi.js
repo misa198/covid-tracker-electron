@@ -31,26 +31,3 @@ export const fetchKompaWorldwideCases = async () => {
   };
   return axiosKompaClient.post('/', JSON.stringify(query));
 };
-
-export const fetchKompaNews = async () => {
-  const query = {
-    operationName: 'topTrueNews',
-    variables: {},
-    query: `
-      query topTrueNews {
-        topTrueNews {
-          id
-          type
-          title
-          content
-          url
-          siteName
-          publishedDate
-          author
-          picture
-        }
-      }
-    `,
-  };
-  return axiosKompaClient.post('/', JSON.stringify(query));
-};

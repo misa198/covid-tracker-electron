@@ -1,10 +1,10 @@
-import { Container, Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
+import { useWindowHeight } from '@react-hook/window-size';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchKompaNewsThunk } from '../app/store/thunks/newsThunk';
-import NewsList from '../components/screens/news/NewsList';
+import { fetchCovidVnExpressNewsThunk } from '../app/store/thunks/newsThunk';
 import Webview from '../components/common/Webview';
-import { useWindowHeight } from '@react-hook/window-size';
+import NewsList from '../components/screens/news/NewsList';
 
 const NewsScreen = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const NewsScreen = () => {
   const lockScrollProps = { height: height - 64, overflow: 'hidden' };
 
   useEffect(() => {
-    dispatch(fetchKompaNewsThunk());
+    dispatch(fetchCovidVnExpressNewsThunk());
   }, [dispatch]);
 
   return (
