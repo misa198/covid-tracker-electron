@@ -20,7 +20,7 @@ const NewsScreen = () => {
 
   useEffect(() => {
     target = targetRef.current;
-  }, [targetRef.current]);
+  }, []);
 
   useEffect(() => {
     if (webviewUrl) {
