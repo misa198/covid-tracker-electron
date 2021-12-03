@@ -107,13 +107,29 @@ const VietnamCasesByDayChart = () => {
               rotateAlways: false,
             },
           },
-          yaxis: {
-            labels: {
-              formatter(value) {
-                return formatNumberWithComma(value);
+          yaxis: [
+            {
+              labels: {
+                formatter(value) {
+                  return formatNumberWithComma(value);
+                },
               },
+              seriesName: 'Ca nhiễm',
             },
-          },
+            {
+              show: false,
+              seriesName: 'Hồi phục',
+            },
+            {
+              labels: {
+                formatter(value) {
+                  return formatNumberWithComma(value);
+                },
+              },
+              seriesName: 'Tử vong',
+              opposite: true,
+            },
+          ],
           stroke: {
             show: true,
             curve: 'smooth',
