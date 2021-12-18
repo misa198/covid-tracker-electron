@@ -6,14 +6,20 @@ const OfflineScreen = () => {
     <Box
       sx={{
         display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
-        pt: 10,
+        justifyContent: 'center',
         color: 'text.secondary',
+        backgroundColor: '#000',
+        position: 'fixed',
+        width: '100%',
+        zIndex: 10,
+        py: '5px',
       }}
     >
-      <WifiOffOutlinedIcon sx={{ fontSize: 140, mb: 2 }} />
-      <Typography variant="h5">Bạn đang ngoại tuyến</Typography>
+      <WifiOffOutlinedIcon sx={{ fontSize: 16 }} />
+      <Typography variant="subtitle2" sx={{ ml: 1 }}>
+        Bạn đang ngoại tuyến
+      </Typography>
     </Box>
   );
 };
