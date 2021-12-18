@@ -20,6 +20,8 @@
     "import/no-named-as-default-member": "off",
     "import/newline-after-import": "off",
     "import/named": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
     "arrow-body-style": "off",
     "no-undef": "off",
     "no-unused-vars": "warn",

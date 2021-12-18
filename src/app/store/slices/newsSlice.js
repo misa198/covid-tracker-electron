@@ -24,10 +24,13 @@ const newsSlice = createSlice({
     builder.addCase(fetchCovidVnExpressNewsThunk.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
+      localStorage.setItem('newsData', JSON.stringify(action.payload));
     });
     builder.addCase(fetchCovidVnExpressNewsThunk.rejected, (state) => {
       state.loading = false;
       state.error = true;
+      const newsData = localStorage.getItem('newsData');
+      if (newsData) state.data = JSON.parse(newsData);
     });
   },
 });

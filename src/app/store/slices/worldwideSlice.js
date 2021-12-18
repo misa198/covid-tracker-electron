@@ -27,11 +27,14 @@ const worldwideSlice = createSlice({
       (state, action) => {
         state.loading = false;
         state.data = action.payload;
+        localStorage.setItem('worldwideCases', JSON.stringify(action.payload));
       },
     );
     builder.addCase(fetchKompaWorldwideCasesThunk.rejected, (state) => {
       state.loading = false;
       state.error = true;
+      const worldwideCases = localStorage.getItem('worldwideCases');
+      if (worldwideCases) state.data = JSON.parse(worldwideCases);
     });
   },
 });

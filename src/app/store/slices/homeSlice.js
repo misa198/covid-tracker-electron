@@ -39,11 +39,20 @@ const homeSlice = createSlice({
         state.dataByDay.loading = false;
         state.dataByDay.data = action.payload.data;
         state.updatedAt = action.payload.updatedAt;
+        localStorage.setItem(
+          'homeDataByDay',
+          JSON.stringify(action.payload.data),
+        );
+        localStorage.setItem('homeUpdatedAt', action.payload.updatedAt);
       },
     );
     builder.addCase(fetchCovidVnExpressDataByDayThunk.rejected, (state) => {
       state.dataByDay.loading = false;
       state.dataByDay.error = true;
+      const dataByDay = localStorage.getItem('homeDataByDay');
+      const updatedAt = localStorage.getItem('homeUpdatedAt');
+      if (dataByDay) state.dataByDay.data = JSON.parse(dataByDay);
+      if (updatedAt) state.updatedAt = updatedAt;
     });
 
     // By map
@@ -55,11 +64,17 @@ const homeSlice = createSlice({
       (state, action) => {
         state.dataByMap.loading = false;
         state.dataByMap.data = action.payload.data;
+        localStorage.setItem(
+          'homeDataByMap',
+          JSON.stringify(action.payload.data),
+        );
       },
     );
     builder.addCase(fetchCovidVnExpressDataByMapThunk.rejected, (state) => {
       state.dataByMap.loading = false;
       state.dataByMap.error = true;
+      const dataByMap = localStorage.getItem('homeDataByMap');
+      if (dataByMap) state.dataByMap.data = JSON.parse(dataByMap);
     });
 
     // By location
@@ -71,6 +86,10 @@ const homeSlice = createSlice({
       (state, action) => {
         state.dataByLocation.loading = false;
         state.dataByLocation.data = action.payload.data;
+        localStorage.setItem(
+          'homeDataByLocation',
+          JSON.stringify(action.payload.data),
+        );
       },
     );
     builder.addCase(
@@ -78,6 +97,9 @@ const homeSlice = createSlice({
       (state) => {
         state.dataByLocation.loading = false;
         state.dataByLocation.error = true;
+        const dataByLocation = localStorage.getItem('homeDataByLocation');
+        if (dataByLocation)
+          state.dataByLocation.data = JSON.parse(dataByLocation);
       },
     );
   },

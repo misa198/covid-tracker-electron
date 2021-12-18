@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  fetchVaccineDataThunk,
   fetchVaccineDataByLocationThunk,
+  fetchVaccineDataThunk,
 } from '../thunks/vaccineThunk';
 
 const initialState = {
@@ -36,10 +36,13 @@ const vaccineSlice = createSlice({
     builder.addCase(fetchVaccineDataThunk.fulfilled, (state, action) => {
       state.overview.data = action.payload;
       state.overview.loading = false;
+      localStorage.setItem('vaccineOverview', JSON.stringify(action.payload));
     });
     builder.addCase(fetchVaccineDataThunk.rejected, (state) => {
       state.overview.error = true;
       state.overview.loading = false;
+      const overview = localStorage.getItem('vaccineOverview');
+      if (overview) state.overview.data = JSON.parse(overview);
     });
 
     builder.addCase(fetchVaccineDataByLocationThunk.pending, (state) => {
@@ -51,11 +54,18 @@ const vaccineSlice = createSlice({
       (state, action) => {
         state.dataByLocation.data = action.payload;
         state.dataByLocation.loading = false;
+        localStorage.setItem(
+          'vaccineDataByLocation',
+          JSON.stringify(action.payload),
+        );
       },
     );
     builder.addCase(fetchVaccineDataByLocationThunk.rejected, (state) => {
       state.dataByLocation.error = true;
       state.dataByLocation.loading = false;
+      const dataByLocation = localStorage.getItem('vaccineDataByLocation');
+      if (dataByLocation)
+        state.dataByLocation.data = JSON.parse(dataByLocation);
     });
   },
 });
