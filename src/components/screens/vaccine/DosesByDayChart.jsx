@@ -98,6 +98,18 @@ const DosesByDayChart = () => {
               show: false,
             },
             background: 'rgba(0, 0, 0, 0)',
+            animations: {
+              enabled: true,
+              easing: 'easeinout',
+              speed: 800,
+              animateGradually: {
+                enabled: true,
+              },
+              dynamicAnimation: {
+                enabled: true,
+                speed: 160
+              }
+            }
           },
           xaxis: {
             categories: chartData.dates,
