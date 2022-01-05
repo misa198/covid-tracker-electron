@@ -7,6 +7,7 @@ import {
 
 const initialState = {
   updatedAt: null,
+  homeFetchedAt: null,
   dataByDay: {
     data: [],
     loading: false,
@@ -39,11 +40,13 @@ const homeSlice = createSlice({
         state.dataByDay.loading = false;
         state.dataByDay.data = action.payload.data;
         state.updatedAt = action.payload.updatedAt;
+        state.homeFetchedAt = new Date().getTime().toString();
         localStorage.setItem(
           'homeDataByDay',
           JSON.stringify(action.payload.data),
         );
         localStorage.setItem('homeUpdatedAt', action.payload.updatedAt);
+        localStorage.setItem('homeFetchedAt', new Date().getTime().toString());
       },
     );
     builder.addCase(fetchCovidVnExpressDataByDayThunk.rejected, (state) => {
@@ -51,6 +54,8 @@ const homeSlice = createSlice({
       state.dataByDay.error = true;
       const dataByDay = localStorage.getItem('homeDataByDay');
       const updatedAt = localStorage.getItem('homeUpdatedAt');
+      const homeFetchedAt = localStorage.getItem('homeFetchedAt');
+      if (homeFetchedAt) state.homeFetchedAt = homeFetchedAt;
       if (dataByDay) state.dataByDay.data = JSON.parse(dataByDay);
       if (updatedAt) state.updatedAt = updatedAt;
     });

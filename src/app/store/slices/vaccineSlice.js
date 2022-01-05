@@ -36,7 +36,11 @@ const vaccineSlice = createSlice({
     builder.addCase(fetchVaccineDataThunk.fulfilled, (state, action) => {
       state.overview.data = action.payload;
       state.overview.loading = false;
+      state.vaccineFetchedAt = new Date().getTime().toString();
+      const vaccineFetchedAt = localStorage.getItem('vaccineFetchedAt');
+      if (vaccineFetchedAt) state.vaccineFetchedAt = vaccineFetchedAt;
       localStorage.setItem('vaccineOverview', JSON.stringify(action.payload));
+      localStorage.setItem('vaccineFetchedAt', new Date().getTime().toString());
     });
     builder.addCase(fetchVaccineDataThunk.rejected, (state) => {
       state.overview.error = true;

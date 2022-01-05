@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchCovidVnExpressNewsThunk } from '../thunks/newsThunk';
 
 const initialState = {
+  newsFetchedAt: null,
   data: [],
   loading: false,
   error: false,
@@ -24,7 +25,11 @@ const newsSlice = createSlice({
     builder.addCase(fetchCovidVnExpressNewsThunk.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
+      state.newsFetchedAt = new Date().getTime().toString();
+      const newsFetchedAt = localStorage.getItem('newsFetchedAt');
+      if (newsFetchedAt) state.newsFetchedAt = newsFetchedAt;
       localStorage.setItem('newsData', JSON.stringify(action.payload));
+      localStorage.setItem('newsFetchedAt', new Date().getTime().toString());
     });
     builder.addCase(fetchCovidVnExpressNewsThunk.rejected, (state) => {
       state.loading = false;

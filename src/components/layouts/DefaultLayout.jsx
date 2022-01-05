@@ -6,6 +6,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
+import ReplayIcon from '@mui/icons-material/Replay';
 import MuiAppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,8 +20,10 @@ import ListItemText from '@mui/material/ListItemText';
 import { styled, useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { memo, useMemo, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
+import { useSelector } from 'react-redux';
 
 const drawerWidth = 265;
 
@@ -116,10 +119,22 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer({ children }) {
+function MiniDrawer({ children }) {
   const theme = useTheme();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const times = useSelector((state) => ({
+    home: state.home.homeFetchedAt,
+    worldwide: state.worldwide.worldwideFetchedAt,
+    vaccine: state.vaccine.vaccineFetchedAt,
+    news: state.news.newsFetchedAt,
+  }));
+  const time = useMemo(() => {
+    const route = pathname.split('/')[1] || 'home';
+    if (!times[route]) return null;
+    return dayjs(Number(times[route])).format('D/M/YYYY HH:mm');
+  }, [pathname, times]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,6 +142,10 @@ export default function MiniDrawer({ children }) {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleReload = () => {
+    navigate(0);
   };
 
   return (
@@ -154,6 +173,11 @@ export default function MiniDrawer({ children }) {
           >
             Covid-19 Tracker
           </Typography>
+          <Box sx={{ flexGrow: 1 }} />
+          {time && <Typography>Cập nhật lần cuối: {time}</Typography>}
+          <IconButton sx={{ ml: 2 }} onClick={handleReload}>
+            <ReplayIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -196,3 +220,5 @@ export default function MiniDrawer({ children }) {
     </Box>
   );
 }
+
+export default memo(MiniDrawer);
