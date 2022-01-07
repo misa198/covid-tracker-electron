@@ -12,8 +12,8 @@ export const fetchZingNewVaccineData = async () => {
   data.data.forEach((item, index) => {
     dayDoses.push({
       date: item.date,
-      first: data.first.datas[index].y,
-      second: data.second.datas[index].y,
+      first: Math.abs(data.first.datas[index].y),
+      second: Math.abs(data.second.datas[index].y),
       average: data.data[index].ma7,
     });
     summaryDoses.push({
